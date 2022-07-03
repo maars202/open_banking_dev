@@ -14,6 +14,13 @@ const app = express();
 // contentTypes in a simpler way
 app.use(bodyParser.json());
 
+app.get("/", 
+    (requestObject, responseObject) => {
+    // magic happens here
+    responseObject.send("yesss")
+});
+
+
 app.get("/yes", 
     (requestObject, responseObject) => {
     // magic happens here
