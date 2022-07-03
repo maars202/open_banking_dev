@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var axios = require('axios');
+const dotenv = require('dotenv');
 const port = 3000;
 
 
@@ -119,8 +120,10 @@ async function payNowQR(req, res){
 // curl -X POST "https://api.ocbc.com:8243/transactional/paynowqr/1.0/payNowQR" -H  "accept: application/json" -H  
 // "Content-Type: application/json" -H  "Authorization: Bearer da808279-e43c-32b4-8a59-5f024fc955cd" 
 // -d "{  \"ProxyType\": \"NRIC\",  \"ProxyValue\": \"S12xxx67A\",  \"Amount\": 11.11,  \"ReferenceText\": \"Test123\",  \"QRCodeSize\": 50,  \"ExpiryDate\": \"20191220\"}"
-
-
-app.listen(port, () => {
+dotenv.config();
+console.log(process.env.PORT)
+app.listen(process.env.PORT || 5000, () => {
     console.log("server started to listen on " + port);
 });
+
+// .listen(process.env.PORT || 5000)
